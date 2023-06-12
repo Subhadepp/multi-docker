@@ -13,3 +13,11 @@ after_success:
   - docker build -t subhadeep/multi-nginx ./nginx
   - docker build -t subhadeep/multi-server ./server
   - docker build -t subhadeep/multi-worker ./worker
+  #log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Take those images and push them to docker hib
+  - docker push subhadeep/multi-client
+  - docker push subhadeep/multi-nginx
+  - docker push subhadeep/multi-server
+  - docker push subhadeep/multi-worker
+
